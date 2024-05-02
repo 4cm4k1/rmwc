@@ -6,23 +6,27 @@
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": ["^bootstrap", "^build", "bootstrap"],
-      "inputs": ["production", "^production"],
+      "dependsOn": [
+        "^bootstrap",
+        "^build",
+        "bootstrap"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ],
       "cache": true
     },
     "serve": {
-      "dependsOn": ["^bootstrap", "bootstrap"]
+      "dependsOn": [
+        "^bootstrap",
+        "bootstrap"
+      ]
     },
     "test": {
-      "inputs": ["default", "^production"],
-      "cache": true
-    },
-    "lint": {
       "inputs": [
         "default",
-        "{workspaceRoot}/.eslintrc.json",
-        "{workspaceRoot}/.eslintignore",
-        "{workspaceRoot}/eslint.config.js"
+        "^production"
       ],
       "cache": true
     },
@@ -32,7 +36,10 @@
       }
     },
     "@nx/vite:test": {
-      "inputs": ["default", "^production"],
+      "inputs": [
+        "default",
+        "^production"
+      ],
       "cache": true
     },
     "build-storybook": {
@@ -43,10 +50,22 @@
         "{projectRoot}/.storybook/**/*",
         "{projectRoot}/tsconfig.storybook.json"
       ]
+    },
+    "@nx/eslint:lint": {
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.eslintrc.json",
+        "{workspaceRoot}/.eslintignore",
+        "{workspaceRoot}/eslint.config.js"
+      ],
+      "cache": true
     }
   },
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
     "production": [
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
@@ -82,8 +101,11 @@
   "tasksRunnerOptions": {
     "default": {
       "options": {
-        "cacheableOperations": ["build-storybook"]
+        "cacheableOperations": [
+          "build-storybook"
+        ]
       }
     }
-  }
+  },
+  "useInferencePlugins": false
 }
